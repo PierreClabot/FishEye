@@ -35,11 +35,27 @@ class PhotographeApi extends Api{
     //     // return await photographes;
         
     // }
-    // 2 methodes séparées
-    async getPhotographes(idPhotographe){
+    async getPhotographe(idPhotographe){
 
         return await this.get()
-        .then(res=>res.photographers); // récupérer uniquement les photographes
+        .then(res=>res.photographers) // récupérer uniquement les photographes
+        .then(photographes=>{
+            for(const photographe of photographes)
+            {
+                if(photographe.id == idPhotographe){
+                    var dataPhotographe = photographe;
+                }
+            }
+            return photographe;
+        })
+        
+    }
+
+
+    async getPhotographes(){
+
+        return await this.get()
+        .then(res=>res.photographers);
         
     }
 }
@@ -82,14 +98,20 @@ class MediaApi extends Api{
                                         // console.log(media.photographerId)
                                         if(media.photographerId == idPhotographe)
                                         {
-                                            //console.log(media.image);
-                                            media.image = chemin+media.image;
+                                            console.log(media);
+                                            if(media.image)
+                                            {
+                                                media.image = chemin+media.image;
+                                            }
+                                            else if(media.video)
+                                            {
+                                                media.video = chemin+media.video;
+                                            }
                                             mediaPhotographe.push(media);
                                             //console.log(media)
                                         }
                             
                                     }
-                                    console.log(mediaPhotographe);
                                     return mediaPhotographe;
                                 });
         return mediaPhotographe;

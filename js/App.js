@@ -2,8 +2,8 @@ class App {
     constructor() {
         this.$photographesWrapper = document.querySelector('.photographes-wrapper')
         this.$mediaWrapper = document.querySelector('.media-wrapper');
-        this.photographesApi = new PhotographeApi('./data/data.json')
 
+        this.photographesApi = new PhotographeApi('./data/data.json')
         this.mediaApi = new MediaApi('./data/data.json');
     }
 
@@ -18,11 +18,17 @@ class App {
             const url = window.location.search;
             const urlParams = new URLSearchParams(url);
             const idPhotographe = urlParams.get("id");
-            console.log(idPhotographe);
+            if(idPhotographe)
+            {
+                // créer la carte contact ?
 
-            const mediaData = await this.mediaApi.getMedia(idPhotographe) // récupère les medias du photographe
-            const medias = mediaData
-                .map(media => new PhotographeFactory(media, 'media'))
+                const mediaData = await this.mediaApi.getMedia(idPhotographe) // récupère les medias du photographe
+                const medias = mediaData
+                    .map(media => {
+                                    //console.log(media);
+                                     new PhotographeFactory(media, 'media')
+                                    })
+            }
         
     }
 }

@@ -1,5 +1,8 @@
 class PhotographeFactory{
     constructor(data,type){
+
+        this.$mediaWrapper = document.querySelector('.media-wrapper')
+
         if(type === "photographe")
         {
             this.$photographesWrapper = document.querySelector('.photographes-wrapper')
@@ -18,15 +21,25 @@ class PhotographeFactory{
         }
         else if(type === "media"){
 
-            this.$mediaWrapper = document.querySelector('.media-wrapper')
-
             const media = new Media(data);
-            const TemplateMedia = new CarteMedia(media)
+            if(data.image){
+                const TemplateMedia = new CartePhoto(media);
+                this.$mediaWrapper.appendChild(
+                    TemplateMedia.creationCarte()
+                )
 
-            this.$mediaWrapper.appendChild(
-                TemplateMedia.creationCarte()
-            )
-            return media
+            }
+            else if(data.video)
+            {
+                const TemplateMedia = new CarteVideo(media);
+                this.$mediaWrapper.appendChild(
+                    TemplateMedia.creationCarte()
+                )
+            }
+            
+
+
+            // return media
         }
         else
         {

@@ -1,4 +1,4 @@
-class CarteMedia {
+class CartePhoto {
     constructor(media) {
         // this._movie = movie
         this.media = media;  // xxxxxxxxxxxxxxxxx
@@ -6,9 +6,8 @@ class CarteMedia {
     }
 
     creationCarte() {
-        const $wrapper = document.createElement('div')
-        $wrapper.classList.add('media')
-        console.log(this.media);
+        const $wrapper = document.createElement('div');
+        $wrapper.classList.add('media');
         const movieCard = `
         <a href=photographe.html?id=${this.media.photographeID}&media=${this.media.id} >
             <div>
