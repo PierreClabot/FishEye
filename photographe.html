@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./asset/css/normalize.css">
+    <link rel="stylesheet" href="./asset/css/style.css">    
+    <title>FishEye</title>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/logo.png" alt="Fisheye Home page">
+        </a>
+    </header>
+
+        <div class="carte-contact">
+            <div>
+                <h1>Mimi Keel</h1>
+                <p>
+                    <span class="localisation">London, UK</span>
+                    <span class="slogan">Voir le beau quand le quotidien</span>
+                </p>
+            </div>
+            <div>
+                <div class="bouton">
+                    Contactez-moi
+                </div>
+            </div>
+            <div>
+                <img src="images/Sample Photos/Photographers ID Photos/MimiKeel.jpg" alt="">
+            </div>
+        </div>
+    <div class="media-wrapper">
+        <!-- <img src="./Sample Photos/Mimi/Portrait_Nora.jpg" >
+        <img src="./images/Sample Photos/Mimi/Portrait_Nora.jpg" > -->
+
+    </div>
+    <div class="conteneur-modal">
+        <div class="fenetre-modal">
+            <div class="fermeture-modal">X</div>
+            <h1>Contactez-moi <span>Mili Keel</span></h1>
+            <label for="prenom" >Prénom</label>
+            <input type="text" id="prenom">
+            <label for="nom" >Nom</label>
+            <input type="text" id="nom">
+            <label for="email" >Email</label>
+            <input type="text" id="email">
+            <label for="message" >Votre message</label>
+            <input type="text" id="message">
+            <input type="button" value="Envoyer">
+        </div>
+    </div>
+    <script src="js/factorie/factories.js"></script>
+
+    <script src="js/modeles/photographe.js"></script>
+    <script src="js/modeles/media.js"></script>
+
+    <script src="js/template/CartePhotographe.js"></script>
+    <script src="js/template/carteMedia.js"></script>
+
+    <script src="js/api/api.js"></script>
+
+    <script src="js/App.js"></script>
+    <script src="js/scripts/modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.carte-contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #FAFAFA;
+    width: 90%;
+    margin: auto;
+    .bouton{
+        @include bouton;
+    }
+    h1{
+        font-size: 3rem;
+        color: $couleurPrimaire2;
+        margin: 0.5rem 0;
+    }
+    .localisation{
+        color: $couleurPrimaire1;
+    }
+    .slogan{
+        margin-top: 1rem;
+        display: block;
+    }
+    img{
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+}
