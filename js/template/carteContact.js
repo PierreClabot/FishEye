@@ -3,6 +3,7 @@ class CarteContact {
         // this._movie = movie
         this.photographe = photographe;  // xxxxxxxxxxxxxxxxx
         // console.log(this.media);
+        this.wrapper = document.querySelector(".carte-contact");
     }
 
     creationCarte() {
@@ -10,10 +11,10 @@ class CarteContact {
         $wrapper.classList.add('carte-contact');
         const contactCard = `
         <div>
-            <h1>Mimi Keel</h1>
+            <h1>${this.photographe.name}</h1>
             <p>
-                <span class="localisation">London, UK</span>
-                <span class="slogan">Voir le beau quand le quotidien</span>
+                <span class="localisation">${this.photographe.city}, ${this.photographe.country}</span>
+                <span class="slogan">${this.photographe.tagline}</span>
             </p>
         </div>
         <div>
@@ -22,11 +23,15 @@ class CarteContact {
             </div>
         </div>
         <div>
-            <img src="images/Sample Photos/Photographers ID Photos/MimiKeel.jpg" alt="">
+            <img src="images/Sample Photos/Photographers ID Photos/${this.photographe.portrait}" alt="">
         </div>
         `;
         
-        $wrapper.innerHTML = contactCard
+        this.wrapper.innerHTML = contactCard
+
+        document.querySelector(".bouton").addEventListener("click",()=>{
+            const modal = new Modal(this.photographe);
+        })
         return $wrapper
 
     }

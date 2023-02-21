@@ -10,12 +10,11 @@ class CartePhoto {
         $wrapper.classList.add('media');
         const movieCard = `
         <a href=photographe.html?id=${this.media.photographeID}&media=${this.media.id} >
-            <div>
                 <img class=imgMedia src='${this.media.image}'>
-            </div>
+
             <div class="infoMedia">
                 <div class=titreMedia>${this.media.titre}</div>
-                <div class="likeMedia">${this.media.like}</div>
+                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart" aria-label="likes"></i></div>
             </div>
         </a>
         `;

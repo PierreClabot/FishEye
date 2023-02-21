@@ -22,7 +22,7 @@ class App {
             {
                 // créer la carte contact ?
 
-                const mediaData = await this.mediaApi.getMedia(idPhotographe) // récupère les medias du photographe
+                const mediaData = await this.mediaApi.getMedias(idPhotographe) // récupère les medias du photographe
                 const medias = mediaData
                     .map(media => {
                                     //console.log(media);

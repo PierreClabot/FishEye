@@ -46,7 +46,7 @@ class PhotographeApi extends Api{
                     var dataPhotographe = photographe;
                 }
             }
-            return photographe;
+            return dataPhotographe;
         })
         
     }
@@ -67,13 +67,89 @@ class MediaApi extends Api{
         this.medias = "";
     }
 
-    async getMedia(idPhotographe){ // idPhotographe en paramatre
+    async getMedia(idMedia){
 
+        return await this.get()
+        .then(res=>res.media) // récupérer uniquement les photographes
+        .then(medias=>{
+            for(const media of medias)
+            {
+                if(media.id == idMedia){
+                    var dataMedia = this.cheminMedia(media); // Récupère media avec chemin exact
+                }
+            }
+            return dataMedia;
+        })
+        
+    }
+    cheminMedia(media){
+        let chemin ;
+        const copyMedia = media;
+        
+        switch(media.photographerId){
+            case 243: // Mimi Keel
+                chemin = "../images/Sample Photos/Mimi/";
+                break;
+            case 930: // Ellie Rose Wilkens
+                chemin = "../images/Sample Photos/Ellie Rose/";
+                break;
+            case 82: // Tracy Galindo
+                chemin = "../images/Sample Photos/Tracy/";
+                break;
+            case 527: // Nabeel Bradford
+                chemin = "../images/Sample Photos/Nabeel/";
+                break;
+            case 925: // Rhode Dubois
+                chemin = "../images/Sample Photos/Rhode/";
+                break;
+            case 195: // Marcel Nikolic
+                chemin = "../images/Sample Photos/Marcel/";
+                break;
+        }
+        if(copyMedia.image)
+        {
+            copyMedia.image = chemin+copyMedia.image;
+        }
+        else if(copyMedia.video)
+        {
+            copyMedia.video = chemin+copyMedia.video;
+        }
+        return copyMedia;
+    }
+    async changeMedia(currentMedia,sens)
+    {
+        var idPhotographe = currentMedia.photographerId;
+        
+        var medias = await this.getMedias(idPhotographe)
+        let cpt=0;
+        for(const media of medias)
+        {
+            if(media.id == currentMedia.id)
+            {
+
+                var indiceNextMedia = cpt+sens; // sens prend la valeur 1 ou -1 selon le chevron cliqué
+            }
+            cpt++;
+        }
+
+        if(indiceNextMedia == medias.length)
+        {
+            indiceNextMedia = 0;
+        }
+        if(indiceNextMedia < 0)
+        {
+            indiceNextMedia = medias.length-1;
+        }
+
+        var nextMedia = medias[indiceNextMedia];
+        var popUpMedia = new PopUpMedia(nextMedia);
+    }
+    async getMedias(idPhotographe){ // idPhotographe en paramatre
         const mediaPhotographe = this.get()
                                 .then(res=>{
                                     var mediaPhotographe = [];
                                     let chemin ;
-                                    switch(idPhotographe){
+                                    switch(idPhotographe.toString()){
                                         case '243': // Mimi Keel
                                             chemin = "../images/Sample Photos/Mimi/";
                                             break;
@@ -95,10 +171,8 @@ class MediaApi extends Api{
                                     }
                                     for(var media of res.media)
                                     {
-                                        // console.log(media.photographerId)
                                         if(media.photographerId == idPhotographe)
                                         {
-                                            console.log(media);
                                             if(media.image)
                                             {
                                                 media.image = chemin+media.image;
@@ -108,7 +182,6 @@ class MediaApi extends Api{
                                                 media.video = chemin+media.video;
                                             }
                                             mediaPhotographe.push(media);
-                                            //console.log(media)
                                         }
                             
                                     }

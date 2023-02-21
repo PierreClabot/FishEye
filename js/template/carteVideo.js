@@ -6,19 +6,19 @@ class CarteVideo {
     }
 
     creationCarte() {
-        console.log("media",this.media);
+        //console.log("media",this.media);
         const $wrapper = document.createElement('div');
         $wrapper.classList.add('media');
         const movieCard = `
         <a href=photographe.html?id=${this.media.photographeID}&media=${this.media.id} >
             <div>
                 <video class=imgMedia controls width="350">
-                    <source src="images/Sample Photos/Mimi/Animals_Wild_Horses_in_the_mountains.mp4">
+                    <source src="${this.media.video}">
                 </video>
             </div>
             <div class="infoMedia">
                 <div class=titreMedia>${this.media.titre}</div>
-                <div class="likeMedia">${this.media.like}</div>
+                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart" aria-label="likes"></i></div>
             </div>
         </a>
         `;

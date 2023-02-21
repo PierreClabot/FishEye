@@ -23,6 +23,8 @@ class CartePhotographe {
                             `;
         
         $wrapper.innerHTML = movieCard
+
+
         return $wrapper
     }
 }
