@@ -21,9 +21,12 @@ class AppPhotographe {
                 const photographeData = await this.photographesApi.getPhotographe(idPhotographe) // récupère les medias du photographe
                 const TemplateContact = new CarteContact(photographeData);
                 TemplateContact.creationCarte();
+                // création du système like
+                let media = document.querySelector(".likeMedia");
             }
             if(idMedia)
             {
+                
                 const media = await this.mediaApi.getMedia(idMedia);
                 const TemplateMedia = new PopUpMedia(media);
                 TemplateMedia.creationTemplate();

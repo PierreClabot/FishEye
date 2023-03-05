@@ -11,7 +11,7 @@ class CartePhotographe {
         const movieCard = `
         <div class="photo">
             <a href="photographe.html?id=${this.photographe.id}">
-                <img src="images/Sample Photos/Photographers ID Photos/${this.photographe.image}" alt="">
+                <img src="images/Sample Photos/${this.photographe.image}" alt="">
                 <h2>${this.photographe.nom}</h2>
             </a>
         </div>

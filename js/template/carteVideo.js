@@ -3,6 +3,10 @@ class CarteVideo {
         // this._movie = movie
         this.media = media;  // xxxxxxxxxxxxxxxxx
         // console.log(this.media);
+        
+        // document.addEventListener("click",(e)=>{
+        //     console.log(this);
+        // })
     }
 
     creationCarte() {
@@ -16,11 +20,12 @@ class CarteVideo {
                     <source src="${this.media.video}">
                 </video>
             </div>
+        </a>
             <div class="infoMedia">
                 <div class=titreMedia>${this.media.titre}</div>
-                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart" aria-label="likes"></i></div>
+                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart like" aria-label="likes"></i></div>
             </div>
-        </a>
+
         `;
         
         $wrapper.innerHTML = movieCard

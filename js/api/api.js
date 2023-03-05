@@ -17,24 +17,6 @@ class PhotographeApi extends Api{
         super(url);
     }
 
-    // async getPhotographe(idPhotographe){
-    //     var photographes ;
-    //     if(idPhotographe)
-    //     {
-
-    //     }
-    //     else
-    //     {
-    //         this.get()
-    //         .then(res=>{ 
-    //             console.log(res.photographers)
-    //             photographes = res.photographers;
-    //             return res.photographers }); // récupérer uniquement les photographes
-    //     }
-    //     console.log(photographes)
-    //     // return await photographes;
-        
-    // }
     async getPhotographe(idPhotographe){
 
         return await this.get()
@@ -83,29 +65,8 @@ class MediaApi extends Api{
         
     }
     cheminMedia(media){
-        let chemin ;
         const copyMedia = media;
-        
-        switch(media.photographerId){
-            case 243: // Mimi Keel
-                chemin = "../images/Sample Photos/Mimi/";
-                break;
-            case 930: // Ellie Rose Wilkens
-                chemin = "../images/Sample Photos/Ellie Rose/";
-                break;
-            case 82: // Tracy Galindo
-                chemin = "../images/Sample Photos/Tracy/";
-                break;
-            case 527: // Nabeel Bradford
-                chemin = "../images/Sample Photos/Nabeel/";
-                break;
-            case 925: // Rhode Dubois
-                chemin = "../images/Sample Photos/Rhode/";
-                break;
-            case 195: // Marcel Nikolic
-                chemin = "../images/Sample Photos/Marcel/";
-                break;
-        }
+        let chemin = "./images/Sample Photos/";
         if(copyMedia.image)
         {
             copyMedia.image = chemin+copyMedia.image;
@@ -148,27 +109,7 @@ class MediaApi extends Api{
         const mediaPhotographe = this.get()
                                 .then(res=>{
                                     var mediaPhotographe = [];
-                                    let chemin ;
-                                    switch(idPhotographe.toString()){
-                                        case '243': // Mimi Keel
-                                            chemin = "../images/Sample Photos/Mimi/";
-                                            break;
-                                        case '930': // Ellie Rose Wilkens
-                                            chemin = "../images/Sample Photos/Ellie Rose/";
-                                            break;
-                                        case '82': // Tracy Galindo
-                                            chemin = "../images/Sample Photos/Tracy/";
-                                            break;
-                                        case '527': // Nabeel Bradford
-                                            chemin = "../images/Sample Photos/Nabeel/";
-                                            break;
-                                        case '925': // Rhode Dubois
-                                            chemin = "../images/Sample Photos/Rhode/";
-                                            break;
-                                        case '195': // Marcel Nikolic
-                                            chemin = "../images/Sample Photos/Marcel/";
-                                            break;
-                                    }
+                                    let chemin = "./images/Sample Photos/";
                                     for(var media of res.media)
                                     {
                                         if(media.photographerId == idPhotographe)

@@ -23,7 +23,7 @@ class CarteContact {
             </div>
         </div>
         <div>
-            <img src="images/Sample Photos/Photographers ID Photos/${this.photographe.portrait}" alt="">
+            <img src="images/Sample Photos/${this.photographe.portrait}" alt="">
         </div>
         `;
         

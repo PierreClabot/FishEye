@@ -4,8 +4,23 @@ class PopUpMedia{
         this.media = media;
         this.wrapper = document.querySelector(".popUp-media");
         this.wrapper.style.display = "flex";
+        document.addEventListener("keyup",(e)=>{ // Pas possible sur la div ?
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            console.log(e.keyCode);
+            if(e.keyCode == 39) // Next
+            {
+                this.mediaApi.changeMedia(this.media,1);
+                console.log(this.media);
+            }
+            else if(e.keyCode == 37){
+                this.mediaApi.changeMedia(this.media,-1);
+                console.log(this.media);
+            }
+        })
         this.mediaApi = new MediaApi('./data/data.json');
         this.creationTemplate();
+
     }
 
     creationTemplate(){
@@ -49,10 +64,12 @@ class PopUpMedia{
             if(target.search("after")>0) // clic chevron right
             {
                 this.mediaApi.changeMedia(this.media,1);
+                console.log(this.media);
             }
             else if(target.search("before")>0) // clic chevron left
             {
                 this.mediaApi.changeMedia(this.media,-1);
+                console.log(this.media);
             }
             //this.mediaApi.changeMedia(this.media,1);
         }))
