@@ -233,6 +233,21 @@ header a img {
   border-radius: 50%;
 }
 
+.recap-photographe {
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+  width: 40%;
+  max-width: 380px;
+  height: 50px;
+  border-radius: 5px 5px 0 0;
+  background-color: #DB8876;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
 * {
   font-family: "DM Sans", sans-serif;
 }

@@ -130,4 +130,21 @@ class MediaApi extends Api{
                                 });
         return mediaPhotographe;
     }
+
+    async getLikes(idPhotographe){ // idPhotographe en paramatre
+        const cptLikes = this.get()
+                                .then(res=>{
+                                    let like = 0;
+                                    for(var media of res.media)
+                                    {
+                                        if(media.photographerId == idPhotographe)
+                                        {
+                                            like += media.likes;
+                                        }
+                            
+                                    }
+                                    return like;
+                                });
+        return cptLikes;
+    }
 }

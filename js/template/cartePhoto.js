@@ -3,6 +3,8 @@ class CartePhoto {
         // this._movie = movie
         this.media = media;  // xxxxxxxxxxxxxxxxx
         // console.log(this.media);
+        this.like = false;
+        this.observers = [];
 
     }
 
@@ -19,8 +21,22 @@ class CartePhoto {
         </div>
         `;
         setTimeout(()=>{
-            document.getElementById(`like-${this.media.id}`).addEventListener("click",()=>{
-                console.log("je click");
+            document.getElementById(`like-${this.media.id}`).addEventListener("click",(e)=>{
+                // console.log("je click");
+                let like = this.media.like;
+                let nodeParent = e.target.parentNode;
+                
+                if(this.like == false)
+                {
+                    like++;
+                    this.like = true;
+                }
+                else{
+                    like = this.media.like;
+                    this.like = false;
+                }
+                
+                nodeParent.querySelector(".numberLike").innerHTML = like;
             })
         },500);
 
@@ -29,7 +45,4 @@ class CartePhoto {
 
     }
 
-    like(){
-        //console.log(this.media);
-    }
 }

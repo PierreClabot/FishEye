@@ -7,6 +7,7 @@ class CarteVideo {
         // document.addEventListener("click",(e)=>{
         //     console.log(this);
         // })
+        this.like = false;
     }
 
     creationCarte() {
@@ -23,10 +24,29 @@ class CarteVideo {
         </a>
             <div class="infoMedia">
                 <div class=titreMedia>${this.media.titre}</div>
-                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart like" aria-label="likes"></i></div>
+                <div class="likeMedia"><span class=numberLike>${this.media.like}</span><i class="fa-sharp fa-solid fa-heart like" id="like-${this.media.id}" aria-label="likes"></i></div>
             </div>
 
         `;
+        setTimeout(()=>{
+            document.getElementById(`like-${this.media.id}`).addEventListener("click",(e)=>{
+                // console.log("je click");
+                let like = this.media.like;
+                let nodeParent = e.target.parentNode;
+                
+                if(this.like == false)
+                {
+                    like++;
+                    this.like = true;
+                }
+                else{
+                    like = this.media.like;
+                    this.like = false;
+                }
+                
+                nodeParent.querySelector(".numberLike").innerHTML = like;
+            })
+        },500);
         
         $wrapper.innerHTML = movieCard
         return $wrapper
