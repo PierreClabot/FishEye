@@ -15,14 +15,16 @@ class AppPhotographe {
 
             if(idPhotographe)
             {
-                const likes = await this.mediaApi.getLikes(idPhotographe);
-                const recapPhotographe = new CarteLike(photographeData,likes);
-                recapPhotographe.creationCarte();
+
                 
                 const photographesData = await this.photographesApi.getPhotographes(idPhotographe) // récupère les photographes
                 const photographes = photographesData
                     .map(photographe => new PhotographeFactory(photographe, 'photographe'))
+                
                 const photographeData = await this.photographesApi.getPhotographe(idPhotographe) // récupère les medias du photographe
+                const likes = await this.mediaApi.getLikes(idPhotographe);
+                const recapPhotographe = new CarteLike(photographeData,likes);
+                recapPhotographe.creationCarte();
                 const TemplateContact = new CarteContact(photographeData);
                 TemplateContact.creationCarte();
 
