@@ -1,0 +1,26 @@
+// BASE
+@import "base/mixins.scss";
+@import "base/variables.scss";
+@import "base/animations.scss";
+
+// COMPONENTS
+@import "components/cartePhotographe.scss";
+@import "components/carteMedia.scss";
+@import "components/modal.scss";
+@import "components/lightBox.scss";
+@import "components/filter.scss";
+
+// LAYOUT
+@import "layout/header.scss";
+
+// PAGE
+@import "page/home.scss";
+@import "page/media.scss";
+
+// FONT
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+*{
+    font-family: 'DM Sans', sans-serif;
+}
+
