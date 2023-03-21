@@ -3,7 +3,7 @@ class Media {
     constructor(media)
     {
         this.id = media.id;
-        this.photographeID = media.photographerId;
+        this.photographerId = media.photographerId;
         this.titre = media.title;
         if(media.image)
         {

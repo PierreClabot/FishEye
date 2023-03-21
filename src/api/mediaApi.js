@@ -93,8 +93,8 @@ class MediaApi extends Api{
     }
     async changeMedia(currentMedia,sens)
     {
-        var idPhotographe = currentMedia.photographerId;
         
+        var idPhotographe = currentMedia.photographerId;
         var medias = await this.getMedias(idPhotographe)
         let cpt=0;
         for(const media of medias)
@@ -117,6 +117,7 @@ class MediaApi extends Api{
         }
 
         var nextMedia = medias[indiceNextMedia];
+        
         var lightbox = new LightBox(nextMedia);
         return lightbox;
     }

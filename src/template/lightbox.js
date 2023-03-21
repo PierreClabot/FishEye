@@ -2,17 +2,17 @@ class LightBox{
     constructor(media)
     {
         this.media = media;
-        console.log("CONSTRUCTOR",this.media);
         this.wrapper = document.querySelector(".popUp-media");
         this.wrapper.style.display = "flex";
         this.mediaApi = new MediaApi('../data/data.json');
         this.creationTemplate();
-
+        this.cpt = 1;
 
     }
 
     creationTemplate(){
         var affichage ;
+        console.log(this.media)
         if(this.media.image)
         {
             affichage = `<img src="${this.media.image}" alt="Lilac breasted roller">`;
@@ -62,11 +62,10 @@ class LightBox{
         // removeEventListener("keyup",document);
         document.addEventListener("keyup",(e)=>{ // Pas possible sur la div ?
             //e.stopImmediatePropagation();
-            console.log(e.keyCode);
             if(e.keyCode == 39) // Next
             {
                 this.mediaApi.changeMedia(this.media,1);
-                console.log(this.media);
+                this.cpt++;
             }
             else if(e.keyCode == 37){
                 this.mediaApi.changeMedia(this.media,-1);

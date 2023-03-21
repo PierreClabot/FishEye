@@ -10,7 +10,4 @@ class Video {
         this.prix = media.price;
     }
 
-    getPhotos(){
-
-    }
 }
