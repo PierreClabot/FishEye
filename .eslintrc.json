@@ -18,6 +18,10 @@
             "double"
         ],
         "indent": ["error", 4],
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "prefer-const" : ["error", {
+            "destructuring": "any",
+            "ignoreReadBeforeAssign": false
+        }]
     }
 }

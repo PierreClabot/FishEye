@@ -1,27 +1,22 @@
-class PhotographeFactory{
-    constructor(data,type){
-  // type à supprimer
-        this.$mediaWrapper = document.querySelector('.media-wrapper')
+class PhotographeFactory {
+    constructor(data, type) {
+        // type à supprimer
+        this.$mediaWrapper = document.querySelector(".media-wrapper");
 
-        if(type === "photographe")
-        {
-            this.$photographesWrapper = document.querySelector('.photographes-wrapper')
+        if (type === "photographe") {
+            this.$photographesWrapper = document.querySelector(".photographes-wrapper");
 
             const photographe = new Photographe(data);
-            const TemplatePhotographe = new CartePhotographe(photographe)
-            if(this.$photographesWrapper)
-            {
+            const TemplatePhotographe = new CartePhotographe(photographe);
+            if (this.$photographesWrapper) {
                 this.$photographesWrapper.appendChild(
-                    TemplatePhotographe.creationCarte()
-                )
+                    TemplatePhotographe.creationCarte(),
+                );
             }
 
-            return new Photographe(data)
-            
+            return new Photographe(data);
         }
-        else
-        {
-            throw "Format inconnu";
-        }
+
+        throw "Format inconnu";
     }
 }

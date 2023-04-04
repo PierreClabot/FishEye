@@ -1,6 +1,5 @@
-class PagePhotographeFactory{
-    constructor(dataPhotographe)
-    {
+class PagePhotographeFactory {
+    constructor(dataPhotographe) {
         this.photographe = dataPhotographe;
 
         const TemplateContact = new CarteContact(dataPhotographe);
@@ -8,6 +7,5 @@ class PagePhotographeFactory{
 
         const TemplateFilter = new CarteFiltre(dataPhotographe);
         TemplateFilter.creationCarte();
-
     }
 }

@@ -179,7 +179,7 @@
 .popUp-media .container-media .media .imgMedia img, .popUp-media .container-media .media .imgMedia video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .popUp-media .container-media .media .chevron {
   width: 5%;
@@ -244,11 +244,15 @@ header a {
 header a img {
   width: 200px;
 }
+header h1 {
+  color: #901C1C;
+}
 
 .carte-contact {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 3rem;
   align-items: center;
   background-color: #FAFAFA;
   width: 90%;

@@ -1,7 +1,5 @@
 class Photographe {
-
-    constructor(photographe)
-    {
+    constructor(photographe) {
         this.id = photographe.id;
         this.image = photographe.portrait;
         this.nom = photographe.name;
@@ -9,5 +7,4 @@ class Photographe {
         this.slogan = `${photographe.tagline}`;
         this.tarif = `${photographe.price}€/jour`;
     }
-
 }

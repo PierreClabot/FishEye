@@ -1,6 +1,5 @@
 class Video {
-    constructor(media)
-    {
+    constructor(media) {
         this.id = media.id;
         this.photographeID = media.photographerId;
         this.titre = media.title;
@@ -9,5 +8,4 @@ class Video {
         this.date = media.date;
         this.prix = media.price;
     }
-
 }
