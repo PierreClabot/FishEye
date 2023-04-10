@@ -1,5 +1,5 @@
-//  import MediaApi from "../api/mediaApi";
-
+// import MediaApi from "../api/mediaApi";
+// export default class LightBox
 class LightBox {
     constructor(media) {
         this.media = media;
@@ -7,10 +7,13 @@ class LightBox {
         this.wrapper.style.display = "flex";
         this.mediaApi = new MediaApi("../data/data.json");
         this.creationTemplate();
-        this.cpt = 1;
-        this.onKeyUp = this.onKeyUp.bind(this);
-        // console.log(this.onKeyUp);
-        // document.addEventListener("keyup", this.onKeyUp);
+        this.onKeyUp = this.onKeyUp.bind(this);// ??????
+        // document.addEventListener("keyup", (e) => { // on ajoute l'évènement pour l'accessibilité ;
+        //     this.onKeyUp(e);
+        // });
+        document.addEventListener("keyup", this.onKeyUp);
+        document.addEventListener("keyup", this.onKeyUp);
+        document.addEventListener("keyup", this.onKeyUp);
     }
 
     creationTemplate() {
@@ -43,7 +46,7 @@ class LightBox {
         const chevrons = document.querySelectorAll(".chevron");
         chevrons.forEach((chevron) => chevron.addEventListener("click", (e) => {
             let target = e.target.classList.value;
-            if (target.search("chevron") > 0) {
+            if (target.search("chevron") > 0) { // on récupère le chevron pour avoir le sens,
                 target = e.target.parentNode.classList.value;
             }
 
@@ -55,32 +58,26 @@ class LightBox {
                 this.mediaApi.changeMedia(this.media, -1);
             }
         }));
-        document.removeEventListener(
-            "keyup",
-            this.onKeyUp,
-        );
-        document.addEventListener("keyup", (e) => {
-            this.onKeyUp(e);
-        });
     }
 
     onKeyUp(e) {
         console.log("e.key", e.key);
-        if (e.key === "ArrowRight") { // Next
-            this.mediaApi.changeMedia(this.media, 1);
-            //  document.removeEventListener("keyup", this.onKeyUp);
-            // console.log(this.onKeyUp);
-            this.cpt += 1;
-        } else if (e.key === "ArrowLeft") {
+        if (e.key === "ArrowRight") { // After
+            // document.removeEventListener("keyup", this.onKeyUp);
+            this.mediaApi.changeMedia(this.media, 1);// retourne lightbox
+        } else if (e.key === "ArrowLeft") { // Before
             this.mediaApi.changeMedia(this.media, -1);
-            // console.log(this.media);
+            // document.removeEventListener("keyup", this.onKeyUp);
+        } else if (e.key === "Escape") { // close
+            this.closePopUp();
+            // document.removeEventListener("keyup", this.onKeyUp);
         }
-        // Rajouter bouton échap
+        document.removeEventListener("keyup", this.onKeyUp);
     }
 
     closePopUp() {
         this.wrapper.style.display = "none";
     }
 }
-//  export default LightBox;
+export default LightBox;
 //  module.exports = { LightBox };

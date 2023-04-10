@@ -1,12 +1,14 @@
+// import LightBox from "./lightbox";
+// export default class CartePhoto
 class CartePhoto {
     constructor(media) {
         this.media = media;
         this.like = false;
-        this.observers = [];
-        console.log(this.media);
+        this.observers = [];// fire event like
     }
 
     creationCarte() {
+        // Création de la carte
         const $wrapper = document.createElement("div");
         $wrapper.classList.add("media");
         $wrapper.setAttribute("role", "Image link");
@@ -23,28 +25,28 @@ class CartePhoto {
 
         $wrapper.innerHTML = movieCard;
 
-        setTimeout(() => {
+        setTimeout(() => { // delay pour ajouter les évènements
             document.getElementById(`like-${this.media.id}`).addEventListener("click", (e) => {
-                // console.log("je click");
-                let { like } = this.media;
+                let { like } = this.media;// like = this.media.like
                 const nodeParent = e.target.parentNode;
 
-                if (this.like === false) {
+                if (this.like === false) { // Si le boolLike est à faux et qu'on clique.
                     like += 1;
                     this.like = true;
-                    this.fire("like");
-                } else {
+                    this.fire("like");// envoyer l'info "like" au compteur global
+                } else { // On a déjà like et on reclique
                     like = this.media.like;
                     this.like = false;
-                    this.fire("dislike");
+                    this.fire("dislike");// envoyer l'info "dislike" au compteur global
                 }
 
                 nodeParent.querySelector(".numberLike").innerHTML = like;
             });
 
-            document.querySelector(`#media-${this.media.id}`).addEventListener("click", (e) => {
-                console.log(this.media);
-                new LightBox(this.media);
+            document.querySelector(`#media-${this.media.id}`).addEventListener("click", () => {
+                const lightbox = new LightBox(this.media); // On crée la lightbox au clic du media
+                // new LightBox(this.media);
+                return lightbox;// @AVOIR
             });
         }, 500);
         return $wrapper;
@@ -60,13 +62,15 @@ class CartePhoto {
                 if (item !== fn) {
                     return item;
                 }
+                return -1;
             },
         );
     }
 
-    fire(evt) {
+    fire(evt) { // envoyer l'event like au compteur global
         this.observers.forEach((item) => {
             item.likeMedia(evt);
         });
     }
 }
+export default CartePhoto;

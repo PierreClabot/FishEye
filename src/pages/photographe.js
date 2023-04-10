@@ -8,39 +8,35 @@ class AppPhotographe {
     }
 
     async main() {
+        // On récupère l'idPhotographe dans l'url,
         const url = window.location.search;
         const urlParams = new URLSearchParams(url);
         const idPhotographe = urlParams.get("id");
-        const idMedia = urlParams.get("media");
 
         if (idPhotographe) {
+            // on crée les composants de la page
             const photographeData = await this.photographesApi.getPhotographe(idPhotographe);
 
             const pagePhotographe = new PagePhotographeFactory(photographeData);
 
             const likes = await this.mediaApi.getLikes(idPhotographe);
 
-            const recapPhotographe = new CarteLike(photographeData, likes);
+            const recapPhotographe = new CarteLike(photographeData, likes);// carte like global
             recapPhotographe.creationCarte();
 
-            const photographesData = await this.photographesApi.getPhotographes(idPhotographe);
-            const photographes = photographesData
-                .map((photographe) => new PhotographeFactory(photographe, "photographe"));
-
+            new PhotographeFactory(photographeData, "photographe");
+            // on affiche ses medias
             const mediaData = await this.mediaApi.getMedias(idPhotographe);
             const medias = mediaData
                 .map((media) => {
                     const objMedia = new MediaFactory(media, "media");
-                    objMedia.subscribe(recapPhotographe);
+                    return objMedia.subscribe(recapPhotographe);
                 });
-        }
-        if (idMedia) {
-            const media = await this.mediaApi.getMedia(idMedia);
-            const TemplateMedia = new LightBox(media);
-            TemplateMedia.creationTemplate();
         }
     }
 }
 
 const appPhotographe = new AppPhotographe();
 appPhotographe.main();
+
+export default AppPhotographe;

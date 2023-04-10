@@ -1,8 +1,10 @@
+// export default
 class Modal {
     constructor(photographe) {
         this.photographe = photographe;
         this.wrapper = document.querySelector(".conteneur-modal");
         this.creationModal();
+        this.data = "";
         document.querySelector(".fermeture-modal").addEventListener("click", () => {
             this.closeModal();
         });
@@ -48,6 +50,8 @@ class Modal {
             email: saisieEmail,
             message: saisieMessage,
         };
+        this.data = dataUserForm;
         console.log(dataUserForm);
     }
 }
+export default Modal;

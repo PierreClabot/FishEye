@@ -1,10 +1,9 @@
 class CartePhotographe {
     constructor(photographe) {
-        // this._movie = movie
         this.photographe = photographe;
     }
 
-    creationCarte() {
+    creationCarte() { // Carte photographe dans l'index.html
         const $wrapper = document.createElement("div");
         $wrapper.classList.add("photographe");
 
@@ -27,3 +26,4 @@ class CartePhotographe {
         return $wrapper;
     }
 }
+export default CartePhotographe;

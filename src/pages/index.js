@@ -1,3 +1,7 @@
+import PhotographeApi from "../api/photographeApi.js";
+import MediaApi from "../api/mediaApi.js";
+import PhotographeFactory from "../factories/mediaFactory.js";
+
 class App {
     constructor() {
         this.$photographesWrapper = document.querySelector(".photographes-wrapper");
@@ -8,7 +12,8 @@ class App {
     }
 
     async main() {
-        const photographesData = await this.photographesApi.getPhotographes(); // api
+        // Affichage de tous les photographes index.html
+        const photographesData = await this.photographesApi.getPhotographes(); // api;
         const photographes = photographesData
             .map((photographe) => new PhotographeFactory(photographe, "photographe"));
     }
@@ -16,3 +21,5 @@ class App {
 
 const app = new App();
 app.main();
+
+export default App;

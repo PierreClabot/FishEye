@@ -10,6 +10,9 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
+    "resolve": {
+        "extensions": [".js", ".jsx"],
+    },
     "rules" : {
         "no-console": "off",
         "warn":"off",

@@ -6,6 +6,7 @@ class CarteLike {
     }
 
     creationCarte() {
+        // carte compteur global
         const $wrapper = document.createElement("div");
         $wrapper.classList.add("recap-photographe");
         const movieCard = `
@@ -20,20 +21,19 @@ class CarteLike {
     }
 
     likeMedia(evt) {
-        if (evt == "like") {
+        if (evt === "like") { // on reçoit l'info like des cartes medias
             this.likesInteractif += 1;
             this.updateAffichage();
             return;
         }
-        if (evt == "dislike") {
+        if (evt === "dislike") { // on reçoit l'info dislike des cartes medias
             this.likesInteractif -= 1;
             this.updateAffichage();
-            return;
         }
-        console.log("N'est pas censé se passer");
     }
 
     updateAffichage() {
         document.querySelector(".recap-like").innerHTML = `${this.likes + this.likesInteractif}<i class="fa-sharp fa-solid fa-heart like"  aria-label="likes">`;
     }
 }
+export default CarteLike;

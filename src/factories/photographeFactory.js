@@ -13,10 +13,10 @@ class PhotographeFactory {
                     TemplatePhotographe.creationCarte(),
                 );
             }
-
+            
             return new Photographe(data);
         }
-
         throw "Format inconnu";
     }
 }
+export default PhotographeFactory;
