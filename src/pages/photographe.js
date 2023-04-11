@@ -1,3 +1,13 @@
+import MediaApi from "../api/mediaApi.js"
+import PhotographeApi from "../api/photographeApi.js"
+import PagePhotographeFactory from "../factories/pagePhotographeFactory.js"
+import PhotographeFactory from "../factories/photographeFactory.js"
+import MediaFactory from "../factories/mediaFactory.js"
+import CarteLike from "../template/carteLike.js"
+
+import CarteContact from "../template/carteContact.js";
+import CarteFiltre from "../template/carteFiltre.js"
+
 class AppPhotographe {
     constructor() {
         this.$photographesWrapper = document.querySelector(".photographes-wrapper");
@@ -15,7 +25,14 @@ class AppPhotographe {
 
         if (idPhotographe) {
             // on crée les composants de la page
+            
             const photographeData = await this.photographesApi.getPhotographe(idPhotographe);
+
+            const TemplateContact = new CarteContact(photographeData);// carte contact photographe
+            TemplateContact.creationCarte();
+            console.log("fin creationCarte()")
+            const TemplateFilter = new CarteFiltre(photographeData);// composant filtre
+            TemplateFilter.creationCarte();
 
             const pagePhotographe = new PagePhotographeFactory(photographeData);
 

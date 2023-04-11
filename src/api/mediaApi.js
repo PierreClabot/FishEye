@@ -1,5 +1,7 @@
 // export default
 import Api from "./api.js";
+import LightBox from "../template/lightbox.js";
+
 class MediaApi extends Api {
     constructor(url) {
         super(url);

@@ -1,3 +1,5 @@
+import LightBox from "../template/lightbox.js"
+
 class CarteVideo {
     constructor(media) {
         this.media = media;

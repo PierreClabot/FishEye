@@ -1,3 +1,7 @@
+import Media from "../modeles/media.js"
+import CartePhoto from "../template/cartePhoto.js"
+import CarteVideo from "../template/carteVideo.js"
+
 class MediaFactory {
     constructor(data, type) {
         this.$mediaWrapper = document.querySelector(".media-wrapper");

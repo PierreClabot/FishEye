@@ -1,3 +1,5 @@
+import Modal from "../utilitaires/modal.js"
+
 class CarteContact {
     constructor(photographe) {
         this.photographe = photographe;
@@ -29,13 +31,14 @@ class CarteContact {
         this.wrapper.innerHTML = contactCard;
 
         setTimeout(() => {
+            console.log(document.querySelector(".bouton"));
             document.querySelector(".bouton").addEventListener("click", () => { // ajout evenement ouverture modale au clic du btn,
+                console.log("CREATE MODAL");
                 const modal = new Modal(this.photographe);
                 return modal;
             });
         }, 500);
 
-        // return $wrapper
     }
 }
 export default CarteContact;

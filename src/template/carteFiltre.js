@@ -1,3 +1,6 @@
+import MediaApi from "../api/mediaApi.js"
+import MediaFactory from "../factories/mediaFactory.js";
+
 class CarteFiltre {
     constructor(photographe) {
         this.photographe = photographe;

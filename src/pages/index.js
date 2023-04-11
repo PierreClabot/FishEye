@@ -1,6 +1,6 @@
 import PhotographeApi from "../api/photographeApi.js";
-import MediaApi from "../api/mediaApi.js";
-import PhotographeFactory from "../factories/mediaFactory.js";
+// import MediaApi from "../api/mediaApi.js";
+import PhotographeFactory from "../factories/photographeFactory.js";
 
 class App {
     constructor() {
@@ -8,14 +8,17 @@ class App {
         this.$mediaWrapper = document.querySelector(".media-wrapper");
 
         this.photographesApi = new PhotographeApi("../data/data.json");
-        this.mediaApi = new MediaApi("../data/data.json");
+        // this.mediaApi = new MediaApi("../data/data.json");
     }
 
     async main() {
         // Affichage de tous les photographes index.html
         const photographesData = await this.photographesApi.getPhotographes(); // api;
-        const photographes = photographesData
-            .map((photographe) => new PhotographeFactory(photographe, "photographe"));
+        photographesData.map(photographe=>{
+            new PhotographeFactory(photographe, "photographe")
+        })
+        // const photographes = photographesData
+        //     .map((photographe) => new PhotographeFactory(photographe, "photographe"));
     }
 }
 

@@ -1,5 +1,5 @@
-// import LightBox from "./lightbox";
-// export default class CartePhoto
+import LightBox from "../template/lightbox.js"
+
 class CartePhoto {
     constructor(media) {
         this.media = media;
@@ -46,7 +46,7 @@ class CartePhoto {
             document.querySelector(`#media-${this.media.id}`).addEventListener("click", () => {
                 const lightbox = new LightBox(this.media); // On crée la lightbox au clic du media
                 // new LightBox(this.media);
-                return lightbox;// @AVOIR
+                return lightbox;
             });
         }, 500);
         return $wrapper;

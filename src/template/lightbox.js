@@ -1,5 +1,5 @@
-// import MediaApi from "../api/mediaApi";
-// export default class LightBox
+import MediaApi from "../api/mediaApi.js";
+
 class LightBox {
     constructor(media) {
         this.media = media;
@@ -7,7 +7,7 @@ class LightBox {
         this.wrapper.style.display = "flex";
         this.mediaApi = new MediaApi("../data/data.json");
         this.creationTemplate();
-        this.onKeyUp = this.onKeyUp.bind(this);// ??????
+        this.onKeyUp = this.onKeyUp.bind(this);
         // document.addEventListener("keyup", (e) => { // on ajoute l'évènement pour l'accessibilité ;
         //     this.onKeyUp(e);
         // });
@@ -63,14 +63,11 @@ class LightBox {
     onKeyUp(e) {
         console.log("e.key", e.key);
         if (e.key === "ArrowRight") { // After
-            // document.removeEventListener("keyup", this.onKeyUp);
             this.mediaApi.changeMedia(this.media, 1);// retourne lightbox
         } else if (e.key === "ArrowLeft") { // Before
             this.mediaApi.changeMedia(this.media, -1);
-            // document.removeEventListener("keyup", this.onKeyUp);
         } else if (e.key === "Escape") { // close
             this.closePopUp();
-            // document.removeEventListener("keyup", this.onKeyUp);
         }
         document.removeEventListener("keyup", this.onKeyUp);
     }
@@ -80,4 +77,3 @@ class LightBox {
     }
 }
 export default LightBox;
-//  module.exports = { LightBox };

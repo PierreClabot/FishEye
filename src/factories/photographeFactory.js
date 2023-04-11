@@ -1,9 +1,11 @@
+import Photographe from "../modeles/photographe.js";
+import CartePhotographe from "../template/CartePhotographe.js";
+
 class PhotographeFactory {
     constructor(data, type) {
         // type à supprimer
         this.$mediaWrapper = document.querySelector(".media-wrapper");
 
-        if (type === "photographe") {
             this.$photographesWrapper = document.querySelector(".photographes-wrapper");
 
             const photographe = new Photographe(data);
@@ -13,10 +15,9 @@ class PhotographeFactory {
                     TemplatePhotographe.creationCarte(),
                 );
             }
-            
+            console.log(data);
             return new Photographe(data);
-        }
-        throw "Format inconnu";
+
     }
 }
 export default PhotographeFactory;
