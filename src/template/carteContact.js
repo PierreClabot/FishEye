@@ -19,7 +19,7 @@ class CarteContact {
                 </p>
             </div>
             <div>
-                <div role="button" class="bouton" aria-label="Contact Me">
+                <div role="button" class="bouton" tabindex="0" aria-label="Contact Me">
                     Contactez-moi
                 </div>
             </div>
@@ -31,9 +31,7 @@ class CarteContact {
         this.wrapper.innerHTML = contactCard;
 
         setTimeout(() => {
-            console.log(document.querySelector(".bouton"));
             document.querySelector(".bouton").addEventListener("click", () => { // ajout evenement ouverture modale au clic du btn,
-                console.log("CREATE MODAL");
                 const modal = new Modal(this.photographe);
                 return modal;
             });

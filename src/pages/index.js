@@ -17,8 +17,7 @@ class App {
         photographesData.map(photographe=>{
             new PhotographeFactory(photographe, "photographe")
         })
-        // const photographes = photographesData
-        //     .map((photographe) => new PhotographeFactory(photographe, "photographe"));
+
     }
 }
 

@@ -2,7 +2,7 @@ import Photographe from "../modeles/photographe.js";
 import CartePhotographe from "../template/CartePhotographe.js";
 
 class PhotographeFactory {
-    constructor(data, type) {
+    constructor(data) {
         // type à supprimer
         this.$mediaWrapper = document.querySelector(".media-wrapper");
 

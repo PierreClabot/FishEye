@@ -57,6 +57,7 @@ class LightBox {
                 console.log(this.media);
                 this.mediaApi.changeMedia(this.media, -1);
             }
+            document.removeEventListener("keyup", this.onKeyUp);
         }));
     }
 

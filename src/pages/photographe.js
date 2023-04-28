@@ -5,8 +5,7 @@ import PhotographeFactory from "../factories/photographeFactory.js"
 import MediaFactory from "../factories/mediaFactory.js"
 import CarteLike from "../template/carteLike.js"
 
-import CarteContact from "../template/carteContact.js";
-import CarteFiltre from "../template/carteFiltre.js"
+import LightBox from "../template/lightbox.js"
 
 class AppPhotographe {
     constructor() {
@@ -15,6 +14,7 @@ class AppPhotographe {
 
         this.photographesApi = new PhotographeApi("../data/data.json");
         this.mediaApi = new MediaApi("../data/data.json");
+        this.onKeyUp = this.onKeyUp.bind(this);
     }
 
     async main() {
@@ -28,28 +28,47 @@ class AppPhotographe {
             
             const photographeData = await this.photographesApi.getPhotographe(idPhotographe);
 
-            const TemplateContact = new CarteContact(photographeData);// carte contact photographe
-            TemplateContact.creationCarte();
-            console.log("fin creationCarte()")
-            const TemplateFilter = new CarteFiltre(photographeData);// composant filtre
-            TemplateFilter.creationCarte();
-
-            const pagePhotographe = new PagePhotographeFactory(photographeData);
+            new PagePhotographeFactory(photographeData);
 
             const likes = await this.mediaApi.getLikes(idPhotographe);
 
             const recapPhotographe = new CarteLike(photographeData, likes);// carte like global
             recapPhotographe.creationCarte();
 
-            new PhotographeFactory(photographeData, "photographe");
+            new PhotographeFactory(photographeData);
             // on affiche ses medias
             const mediaData = await this.mediaApi.getMedias(idPhotographe);
-            const medias = mediaData
-                .map((media) => {
+            mediaData.map((media) => {
                     const objMedia = new MediaFactory(media, "media");
+                    // **************** ************
+                    // document.querySelector(`media-${media.id}`).addEventListener(`keyup`,this.eventLike.bind(objMedia))
+                    //document.addEventListener(`keyup`,this.eventLike.bind(objMedia))
+                    //console.log(`media-${media.id}`)
                     return objMedia.subscribe(recapPhotographe);
                 });
+
+            //document.addEventListener("keyup",this.onKeyUp);
         }
+    }
+
+    async onKeyUp(e)
+    {
+        // console.log(e);
+        if(e.code === "Space" || e.code === "Enter"){
+            let idMedia=e.target.parentNode.id;
+            idMedia = idMedia.replace("media-","")
+            if(e.target.classList.value.search("containerImgMedia")>=0)
+            { 
+                let media = await this.mediaApi.getMedia(idMedia)
+                new LightBox(media);
+            }
+            
+        }
+    }
+
+    eventLike(e){
+        e.stopImmediatePropagation();
+        
     }
 }
 
