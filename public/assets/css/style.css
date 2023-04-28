@@ -184,6 +184,7 @@
 .popUp-media .container-media .media .chevron {
   width: 5%;
   margin: auto;
+  cursor: pointer;
 }
 
 .carte-filter {

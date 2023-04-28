@@ -14,3 +14,4 @@ class Media {
         this.prix = media.price;
     }
 }
+export default Media;

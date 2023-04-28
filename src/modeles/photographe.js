@@ -8,3 +8,4 @@ class Photographe {
         this.tarif = `${photographe.price}€/jour`;
     }
 }
+export default Photographe;

@@ -1,3 +1,7 @@
+// export default
+import Api from "./api.js";
+import LightBox from "../template/lightbox.js";
+
 class MediaApi extends Api {
     constructor(url) {
         super(url);
@@ -66,7 +70,7 @@ class MediaApi extends Api {
     }
 
     versDateJS(date) {
-        // date au format YYYYMMDD
+        // date au format YYYYMMDD,la convertit en date js
         const dateSepare = date.split("-");
         return new Date(dateSepare[0], (parseInt(dateSepare[1], 10) - 1), dateSepare[2]);
     }
@@ -86,14 +90,15 @@ class MediaApi extends Api {
         const idPhotographe = currentMedia.photographerId;
         const medias = await this.getMedias(idPhotographe);
         let cpt = 0;
+        let indiceNextMedia;
         for (const media of medias) {
-            if (media.id == currentMedia.id) {
-                var indiceNextMedia = cpt + sens; // sens prend la valeur 1 ou -1 selon le chevron cliqué
+            if (media.id === currentMedia.id) {
+                indiceNextMedia = cpt + sens; // sens prend la valeur 1 ou -1 selon le chevron cliqué
             }
-            cpt++;
+            cpt += 1;
         }
 
-        if (indiceNextMedia == medias.length) {
+        if (indiceNextMedia === medias.length) {
             indiceNextMedia = 0;
         }
         if (indiceNextMedia < 0) {
@@ -140,4 +145,5 @@ class MediaApi extends Api {
         return cptLikes;
     }
 }
-//  export default MediaApi;
+//  MediaApi;
+export default MediaApi;

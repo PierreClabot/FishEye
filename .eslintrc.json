@@ -4,24 +4,15 @@
         "commonjs": true,
         "es2021": true
     },
-    "extends": "airbnb-base",
+    "extends": "eslint:recommended",
     "overrides": [
     ],
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
-    "rules" : {
-        "no-console": "off",
-        "warn":"off",
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "indent": ["error", 4],
-        "linebreak-style": 0,
-        "prefer-const" : ["error", {
-            "destructuring": "any",
-            "ignoreReadBeforeAssign": false
-        }]
+    "rules": {
+        
     }
 }

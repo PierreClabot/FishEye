@@ -1,3 +1,5 @@
+import Modal from "../utilitaires/modal.js"
+
 class CarteContact {
     constructor(photographe) {
         this.photographe = photographe;
@@ -5,6 +7,7 @@ class CarteContact {
     }
 
     creationCarte() {
+        // carte contact page photographe.html
         const $wrapper = document.createElement("div");
         $wrapper.classList.add("carte-contact");
         const contactCard = `
@@ -16,7 +19,7 @@ class CarteContact {
                 </p>
             </div>
             <div>
-                <div role="button" class="bouton" aria-label="Contact Me">
+                <div role="button" class="bouton" tabindex="0" aria-label="Contact Me">
                     Contactez-moi
                 </div>
             </div>
@@ -28,12 +31,12 @@ class CarteContact {
         this.wrapper.innerHTML = contactCard;
 
         setTimeout(() => {
-            document.querySelector(".bouton").addEventListener("click", () => {
+            document.querySelector(".bouton").addEventListener("click", () => { // ajout evenement ouverture modale au clic du btn,
                 const modal = new Modal(this.photographe);
                 return modal;
             });
         }, 500);
 
-        // return $wrapper
     }
 }
+export default CarteContact;

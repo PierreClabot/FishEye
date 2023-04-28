@@ -9,3 +9,4 @@ class Video {
         this.prix = media.price;
     }
 }
+export default Video;
