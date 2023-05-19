@@ -1,0 +1,51 @@
+.carte-filter{
+    display: flex;
+    align-items: center;
+    margin: 2rem 0 0rem 5vw;
+
+    .libelleFilter{
+        margin-right: 1rem;
+        font-weight: bold;
+    }
+    .container-menu{
+        width: 200px;
+        background-color: #901C1C;
+        color: #f1f1f1;
+        position: relative;
+        .btn-filter{
+            width: 100%;
+            background-color: inherit;
+            border: none;
+            outline: none;
+            color: inherit;
+            text-align: left;
+            padding: 1rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .menu{
+            display: none;
+            width: 100%;
+            position: absolute;
+            background-color: #901C1C;
+            color: #f1f1f1;
+            z-index: 10;
+        }
+        .menu div{
+            padding: 1rem;
+            position: relative;
+        }
+        .menu div::before{
+            content: "";
+            position: absolute;
+            top : 0;
+            width: 80%;
+            height: 1px;
+            background-color: #f1f1f1;
+        }
+    }
+}
+
+

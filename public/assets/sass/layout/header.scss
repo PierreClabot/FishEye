@@ -1,0 +1,17 @@
+header
+{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 5rem 5rem 5rem;
+    a{
+        display: flex;
+        align-items: center;
+        img
+        {
+            width: 200px;
+        }
+    }
+    h1{
+        color: #901C1C;
+    }
+}

@@ -1,0 +1,50 @@
+.photographes-wrapper{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .photographe{
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 500px;
+        margin-top: 3rem;
+        
+        .photo a{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            img{
+                width: 200px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 50%;
+                // overflow-clip-margin: unset; // xxxxxxxxxxxxxxxxxxxxx
+            }
+            h2{
+                text-align: center;
+                font-size: 36px;
+                margin: 10px 0 0 0;
+                color: $couleurPrimaire2;
+                
+            }
+        }
+        .information{
+            text-align: center;
+            line-height: 0.9rem;
+            .localisation{
+                font-size: 13px;
+                color: #901C1C;
+            }
+            .slogan{
+                font-size: 10px;
+            }
+            .tarif{
+                font-size: 9px;
+                color: #757575;
+            }
+        }
+    }
+}
